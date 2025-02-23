@@ -1,0 +1,4 @@
+{
+    "css.completion.triggerPropertyValueCompletion": false,
+    "scss.completion.triggerPropertyValueCompletion": false
+}
