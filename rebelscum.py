@@ -38,7 +38,7 @@ def main():
             # util.printer(50*'-','fast')
             # print(1*'\n')
             time.sleep(3)
-            print('')
+            # print('')
             # Build the ship!
             player_ship = ship.ship_generator()
             ship.ship_builder(player_ship['gender'], player_ship['edges'])

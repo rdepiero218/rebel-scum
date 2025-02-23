@@ -67,7 +67,6 @@ def print_ship_sheet(ship):
     # print 
     sheet_string = f"""
 SIZE:   {ship['size']} ({ship['die']})
-
 GENDER: {ship['gender']}
 
 """
@@ -141,7 +140,7 @@ def ship_builder(gender, edges):
     time.sleep(1)
     print('')
     util.printer('....Building Ship', 'slow')
-    print(' ')
+    # print(' ')
     
     for i, feature in enumerate(features, start=1):
         # Calculate progress
@@ -150,15 +149,15 @@ def ship_builder(gender, edges):
         spaces = ' ' * (bar_length - len(bar))
         
         # Display progress bar with feature name
-        sys.stdout.write(f"\r{1*' '}[{bar}{spaces}] {int(progress * 100)}% — Installing: {feature} {8*' '}")
+        sys.stdout.write(f"\r{3*' '}[{bar}{spaces}] {int(progress * 100)}% — Installing: {feature} {8*' '}")
         sys.stdout.flush()
         
         time.sleep(0.5)  # Simulate time taken to install each feature
 
-    print('\n\n')
+    print('\n')
     # Assign gender and other funny traits
     util.printer(f"....Assigning ship gender... ✅ {gender}")
-    print(' ')
+    # print(' ')
 
     time.sleep(1)
  
@@ -169,8 +168,11 @@ def ship_builder(gender, edges):
         # print(' ')
         i += 1
         time.sleep(0.5)
-        print(' ')
+        # print(' ')
 
+    print(' ')
+    util.printer('....Ship build complete', 'slow')
+    print(' ')
     util.printer('....Loading Ship Profile', 'slow')
     # util.printer('....', 'slow')
     time.sleep(2)
@@ -186,8 +188,8 @@ def main():
     ship = ship_generator()
     print(2*'\n')
     # Build the ship!
-    # ship_builder(ship['gender'], ship['edges'])
-    print(2*'\n')
+    ship_builder(ship['gender'], ship['edges'])
+    # print(2*'\n')
     # print('Another line here')
     # print(2*'\n')
     print_ship_sheet(ship)

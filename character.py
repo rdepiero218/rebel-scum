@@ -125,10 +125,13 @@ def recruit_crew(crew):
 
     for msg in search_msgs:
 
-        util.printer(f"\n....{msg}\n")
+        util.printer(f"....{msg}")
         time.sleep(1)
    
-    
+    print(' ')
+    util.printer(f"....Processing candidates ")
+    print(' ')
+    # util.printer(f"....processing candidates ")
     recruited_crew = []
     
     for member in crew:
@@ -176,9 +179,9 @@ def crew_manifest(crew):
     # print('|'+62*' '+'|')
     util.printer('|'+'CREW MANIFEST'.center(60, ' ')+'|', 'fast')
     util.printer(border, 'fast')
-    time.sleep(2)
     print('')
-    
+    time.sleep(0.5)
+
     for member in crew:
         print_character_sheet(member)
         time.sleep(1)
@@ -196,7 +199,7 @@ def main():
     # character = character_generator()
     # print_character_sheet(character)
 
-    num_players = 1
+    num_players = 2
     crew = crew_generator(num_players)
     # # print(crew)
     # print(2*'\n')
@@ -207,7 +210,7 @@ def main():
     # print(2*'\n')
     # print(50*'-')
     # print(2*'\n')
-    crew_manifest(crew)
+    # crew_manifest(crew)
 
 
 
