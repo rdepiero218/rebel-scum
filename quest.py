@@ -24,9 +24,9 @@ def quest_generator():
 def print_quest(quest):
     
     border = 65*'-'
-    print(border)
-    print('INCOMING TRANSMISSION')
-    print(border)
+    util.printer(border, 'fast')
+    util.printer('INCOMING TRANSMISSION', 'fast')
+    util.printer(border, 'fast')
     util.printer(util.wrap_text(quest, 'indent_all'))
 
 ##------------------------------
@@ -42,8 +42,8 @@ def main():
     num_players = 2
 
     print(2*'\n')
-    print(50*'-')
-    print(2*'\n')
+    # print(50*'-')
+    # print(2*'\n')
 
 if __name__ == "__main__":
     main()

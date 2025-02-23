@@ -10,65 +10,77 @@ import character, quest, ship
 
 
 
-# def main():
-
-#     print_header() 
-
-#     while True:
-#         time.sleep(1)
-#         print(40*'-')
-#         print('To obtain your ship and crew assignments,\nenter a number of players or q to QUIT')
-#         time.sleep(1)
-#         print('')
-#         response = input('Number of players: ')
-#         print(40*'-')
-#         print('')
-        
-#         if response == 'q':
-#             print('')
-#             print(40*'-')
-#             print('See you next time!'.center(30, '*').center(30,' '))
-#             print(40*'-')
-#             playing = False
-#             break
-#         else:
-#             # character.print_game(int(response))
-#             time.sleep(5)
-#             # Build the ship!
-#             the_ship = ship.ship_generator()
-#             the_ship.ship_builder(ship['gender'], ship['edges'])
-#             # Recruit your crew!
-#             character.crew_manifest(int(response))
-#             # Incoming Transmission!
-#             quest = quest.quest_generator()
-#             quest.print_quest()
-
-            
-#             print(2*'\n')
-
-#             break
-
 def main():
-    ## basic testing for functions
-    print_header()
-    print(1*'\n')
-    util.printer(50*'-','fast')
-    print(1*'\n')
-    # character.print_game(int(response))
-    time.sleep(3)
-    num_players = 1
-    print('')
-    # Build the ship!
-    player_ship = ship.ship_generator()
-    ship.ship_builder(player_ship['gender'], player_ship['edges'])
-    ship.print_ship_sheet(player_ship)
-    # Recruit your crew!
-    player_crew = character.crew_generator(num_players)
-    character.recruit_crew(num_players)
-    character.crew_manifest(player_crew)
-    # Incoming Transmission!
-    prompt = quest.quest_generator()
-    quest.print_quest(prompt)
+
+    print_header() 
+
+    while True:
+        time.sleep(1)
+        # print(40*'-')
+        util.printer(util.wrap_text('To obtain your ship and crew assignments, enter a number of players or q to QUIT'))
+        time.sleep(1)
+        print('')
+        response = input('Number of players:  ')
+        print(' ')
+        util.printer(8*" " + 50*'-','fast')
+        print('')
+        
+        if response == 'q':
+            print('')
+            util.printer(8*" " + 50*'-','fast')
+            util.printer(('Thanks for Playing!').center(65, ' '))
+            util.printer(8*" " + 50*'-','fast')
+            playing = False
+            break
+        else:
+            num_players = int(response)
+            # print(1*'\n')
+            # util.printer(50*'-','fast')
+            # print(1*'\n')
+            time.sleep(3)
+            print('')
+            # Build the ship!
+            player_ship = ship.ship_generator()
+            ship.ship_builder(player_ship['gender'], player_ship['edges'])
+            ship.print_ship_sheet(player_ship)
+            util.printer(8*" " + 50*'-','fast')
+            # Recruit your crew!
+            player_crew = character.crew_generator(num_players)
+            character.recruit_crew(player_crew)
+            character.crew_manifest(player_crew)
+            # Incoming Transmission!
+            prompt = quest.quest_generator()
+            quest.print_quest(prompt)
+
+            print(2*'\n')
+            util.printer(8*" " + 50*'-','fast')
+            util.printer(('Thanks for Playing!').center(65, ' '))
+            util.printer(8*" " + 50*'-','fast')
+
+            break
+
+
+# def main():
+#     ## basic testing for functions
+#     print_header()
+    # print(1*'\n')
+    # util.printer(50*'-','fast')
+    # print(1*'\n')
+    # # character.print_game(int(response))
+    # time.sleep(3)
+    # num_players = 1
+    # print('')
+    # # Build the ship!
+    # player_ship = ship.ship_generator()
+    # ship.ship_builder(player_ship['gender'], player_ship['edges'])
+    # ship.print_ship_sheet(player_ship)
+    # # Recruit your crew!
+    # player_crew = character.crew_generator(num_players)
+    # character.recruit_crew(player_crew)
+    # character.crew_manifest(player_crew)
+    # # Incoming Transmission!
+    # prompt = quest.quest_generator()
+    # quest.print_quest(prompt)
 
 
 # def print_game(num_players):
@@ -110,8 +122,7 @@ def print_header():
            |   (----`|  ,----'|  |  |  | |  \  /  |          
             \   \    |  |     |  |  |  | |  |\/|  |          
         .----)   |   |  `----.|  `--'  | |  |  |  |          
-        |_______/     \______| \______/  |__|  |__|          
-                                               
+        |_______/     \______| \______/  |__|  |__|                               
     """
     opening_msg = """
 It is a dark time. BARON DEATHRAY and his KILLTROOPERS hunt down all dissenion from the evil KILLSTAR REPUBLICK. Fascism and terror rule the star system!
@@ -120,14 +131,14 @@ In the darkness, a motley band of revolutionaries, traitors, criminals, robots, 
 
 You are are our only hope...
 """
-    
+    print(' ')
     border = '\n'+ 16*'--==' + '\n'
     print(border)
+    print("A polymorph RPG by Chris O'Neill, 9th Level Games".center(63,' '))
     print(header.center(80,' '))
     print(border)
-    # print(10*'\u2022\u29BE\u2022\u2734')
     util.printer(util.wrap_text(opening_msg, 'blank_lines'))
-    # print('The adventures of the crew of the '.center(80,' '))
-
+    util.printer(8*" " + 50*'-','fast')
+    print(' ')
 if __name__ == '__main__':
     main()

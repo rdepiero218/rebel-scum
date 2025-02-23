@@ -120,7 +120,7 @@ search_methods = [
     'Reading desperate pleas for work on abandoned distress beacons',
     "Phishing Killstar Republick's executive email list",
     "Initiating trade with merchant for 'certified organic crew members'",
-    "Processing debtors from AI bookmaking operation"
+    "Processing debtors from AI bookmaking operation",
     'Extracting workers from an "unpaid internship" on mining asteroid',
     'Pressing random buttons on interdimensional recruitment kiosk',
     'Posting ad on "FindYourCrewmate.com" (not a scam, probably)',

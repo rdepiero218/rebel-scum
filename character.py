@@ -61,9 +61,9 @@ def character_generator():
     
 def print_character_sheet(character):
     '''prints the character sheet'''
-    print(30*'~')
-    print(f"{character['name']} - {character['class']}")
-    print(30*'~')
+    util.printer(30*'~', 'fast')
+    util.printer(f"{character['name']} - {character['class']}", 'fast')
+    util.printer(30*'~', 'fast')
     # print(f"Role:   {character['role']} ({character['die']})")
     # print(f"Gender: {character['gender']}")
     # print('')
@@ -87,7 +87,7 @@ EDGES:
 """
     util.printer (sheet_string, 'fast')
     for edge in character['edges']:
-        util.printer(f"    {edge}")
+        util.printer(f">    {edge}")
         time.sleep(0.5)
     print(' ')
 
@@ -149,10 +149,13 @@ def recruit_crew(crew):
         sys.stdout.flush()
         time.sleep(3)
     
-    util.printer("\n\n....Crew recruitment complete")
+    util.printer("\n\n....Crew recruitment complete", 'slow')
+    time.sleep(0.5)
+    print(' ')
     util.printer('....Loading Crew Manifest', 'slow')
-    util.printer('....', 'slow')
+    # util.printer('....', 'slow') 
     time.sleep(2)
+    print(' ')
 
     # crew_manifest(crew)
     # util.printer("Your crew:")
@@ -169,11 +172,11 @@ def crew_manifest(crew):
 
 # """
     border = 62*'-'
-    print(border)
+    util.printer(border, 'fast')
     # print('|'+62*' '+'|')
-    print('|'+'CREW MANIFEST'.center(60, ' ')+'|')
+    util.printer('|'+'CREW MANIFEST'.center(60, ' ')+'|', 'fast')
+    util.printer(border, 'fast')
     time.sleep(2)
-    print(border)
     print('')
     
     for member in crew:
@@ -193,7 +196,7 @@ def main():
     # character = character_generator()
     # print_character_sheet(character)
 
-    num_players = 5
+    num_players = 1
     crew = crew_generator(num_players)
     # # print(crew)
     # print(2*'\n')

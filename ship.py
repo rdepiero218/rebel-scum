@@ -58,9 +58,12 @@ def print_ship_sheet(ship):
     speed = 0.5
     # print ship name
     border = 31*'-='+'-'
-    print(border)
-    print(f"▶︎{ship['name'].center(61,' ')}◀︎")
-    print(border)
+    # print(border)
+    # print(f"▶︎{ship['name'].center(61,' ')}◀︎")
+    # print(border)
+    util.printer(border, 'fast')
+    util.printer(f"▶︎{ship['name'].center(61,' ')}◀︎", 'fast')
+    util.printer(border, 'fast')
     # print 
     sheet_string = f"""
 SIZE:   {ship['size']} ({ship['die']})
@@ -80,10 +83,13 @@ GENDER: {ship['gender']}
 ╰------------------╯
 """
     time.sleep(speed)
-    print(border) 
+    # print(border) 
+    util.printer(border, 'fast')
     for edge in ship['edges']:
         time.sleep(speed)  
         util.printer(f">     {edge}")
+
+    print(' ')
 
 
 # def ship_builder(gender, edges):
@@ -135,7 +141,7 @@ def ship_builder(gender, edges):
     time.sleep(1)
     print('')
     util.printer('....Building Ship', 'slow')
-    print('')
+    print(' ')
     
     for i, feature in enumerate(features, start=1):
         # Calculate progress
@@ -166,8 +172,9 @@ def ship_builder(gender, edges):
         print(' ')
 
     util.printer('....Loading Ship Profile', 'slow')
-    util.printer('....', 'slow')
+    # util.printer('....', 'slow')
     time.sleep(2)
+    print(' ')
 
 ##------------------------------
 ## TESTING
