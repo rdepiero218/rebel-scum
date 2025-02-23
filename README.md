@@ -11,6 +11,8 @@ It slow prints to give it that nice old school feel.
 
 Flavor text pops up here and there as it's printing.
 
+**Note:** Must have Python 3.12 or higher for this to run correctly. Otherwise you'll get errors because of the `\` being used in my `f`-strings.
+
 
 
 ## To be added
