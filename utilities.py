@@ -1,6 +1,5 @@
 import sys,time
 import textwrap
-import curses
 
 
 # def indented_wrap(text, width=65, first=0, indent=5):
@@ -45,13 +44,6 @@ def wrap_text(text, method='indent_all', width=65, indent=5):
         return wrap_with_blank_lines(text, width)
     else:
         raise ValueError("Invalid method. Choose 'indent_all', 'indented_wrap', or 'wrap_with_blank_lines'.")
-
-# def text_wrapper(text, width=65, initial=0, indent=5, blank_lines=False):
-
-#     if blank_lines == True: 
-#         return wrap_with_blank_lines(text, width)
-#     else:
-#         return indented_wrap(text, width, initial, indent)
 
 def printer(str, speed=None):
    '''Prints text to screen one character at a time'''

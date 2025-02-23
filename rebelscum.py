@@ -1,3 +1,9 @@
+'''Character & quest generator for Rebel Scum, 
+a TTRPG created by Chris O'Neil at 9th Level Games'''
+
+## Written by Regene DePiero, 2025
+
+
 import sys, time
 import random
 
@@ -5,9 +11,6 @@ import utilities as util
 import aspects
 
 import character, quest, ship
-
-
-
 
 
 def main():

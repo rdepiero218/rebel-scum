@@ -1,5 +1,5 @@
 import sys,time, textwrap
-import curses
+# import curses
 
 
 
