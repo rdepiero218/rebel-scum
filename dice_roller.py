@@ -13,45 +13,70 @@ outcomes = {
     'move': [3, 4, 5], # physical
     'blaster' : [4, 5, 6, 7], # conflict
     'might' : [5, 6, 7, 8, 9], # strength
-}
-
+}  
 
 def roll_die(die_type):
 
     roll = random.randint(1, dice[die_type])
-
-    # print('You rolled a', roll)
     
-    return roll
+    return (roll, die_type)
 
-def check_core_resolver(action, roll):
+def check_resolver(action, roll):
+    """Check resolver"""
 
-    if roll in outcomes[action]:
-        # print('Success!')
-        result = True
-    elif roll == 1:
+    if roll[0] == dice[roll[1]]:
+        result = 'ultimate'
+        # print('Your ULTIMATE! Success depends on how BRIGHT or DARK it is')
+    elif roll[0] == 1:
         result = 'key'
+        # print('Your KEY! Success depends on your character')
+    elif roll[0] in outcomes[action]:
+        result = True
     else:
-        # print('Unsuccessful :(')
         result = False
+
+
+
+    #    if roll in outcomes[action]:
+    #         # print('Success!')
+    #         result = True
+    #     elif roll == 1:
+    #         result = 'key'
+    #     elif roll :
+    #         # print('Unsuccessful :(')
+    #         result = False
+
+
+    # if roll in outcomes[action]:
+    #     # print('Success!')
+    #     result = True
+    # elif roll == 1:
+    #     result = 'key'
+    # else:
+    #     # print('Unsuccessful :(')
+    #     result = False
 
     return result
 
 def check_vantage(results, vantage=None):
-    """Check core resolver (not key or crown)"""
+   
     success = False
     
     if vantage == 'd':
         if False in results:
             # print('Unsuccessful :(')
             success = False
-        else: 
-            # print('Success!')
+        elif 'key' or 'ultimate' in results:
+            success = 'unknown'
+        else:
+            # print('Unsuccessful :(')
             success = True
     else:
         if True in results:
             # print('Success!')
             success = True
+        elif ('key' or 'ultimate') in results:
+            success = 'unknown'
         else:
             # print('Unsuccessful :(')
             success = False
@@ -63,10 +88,12 @@ def roll(die_type, action, vantage=None):
 
     vantage_type = None
 
-    if vantage == 'a' or vantage == 'd':
+    if vantage == None:
+        rolls = [roll_die(die_type)] 
+        print(f'You are rolling for {action.upper()}')
 
+    elif vantage == 'a' or vantage == 'd':
         rolls = [roll_die(die_type), roll_die(die_type)]
-
         if vantage == 'a':
             vantage_type = 'ADVANTAGE'
             # print('You are rolling with ADVANTAGE')
@@ -74,34 +101,43 @@ def roll(die_type, action, vantage=None):
             vantage_type = 'DISADVANTAGE'
             # print('You are rolling with DISADVANTAGE')
         print(f'You are rolling for {action.upper()} with {vantage_type}')
-        
-
-    else:
-        rolls = [roll_die(die_type)]
-        print(f'You are rolling for {action.upper()}')
-
+    
     results = []
     
-    
-    
     for roll in rolls:
-        print('You rolled a ', roll)
-        if roll == 1:
-            print('Your KEY! Success depends on your character')
-            results.append(True)
-        elif roll == dice[dice_type]:
-            print('Your ULTIMATE! Success depends on how BRIGHT or DARK it is')
-            results.append(True)
-        else:
-            # resolve = resolver(action, roll)
-            # print('Success?', resolve)
-            # results.append(resolve)
-            results.append(check_core_resolver(action, roll))
+        result = check_resolver(action, roll)
+        roll_result_msg = f'You rolled a {roll[0]} with a {roll[1]}'
+
+        if result == 'key':
+            success_msg = f': Your KEY! Success depends on your character.'
+        elif result == 'ultimate':
+            success_msg = f': Your ULTIMATE! Success depends on how BRIGHT or DARK it is.'
+        elif result == True:
+            success_msg = f': A success!'
+        elif result == False:
+            success_msg = f': A failure :('
+
+        print(roll_result_msg + success_msg)
+        results.append(result)
+        # if roll == 1:
+        #     print('Your KEY! Success depends on your character')
+        #     results.append(True)
+
+        # elif roll == dice[die_type]:
+        #     print('Your ULTIMATE! Success depends on how BRIGHT or DARK it is')
+        #     results.append(True)
+        # else:
+        #     # resolve = resolver(action, roll)
+        #     # print('Success?', resolve)
+        #     # results.append(resolve)
+            # results.append(check_resolver(action, roll))
 
     success = check_vantage(results, vantage)
-     
+    # print('Success is: ', success)
     if success == True:
         print('A successful roll :)')
+    elif success == 'unknown':
+        print(f'Success with {vantage_type} cannot be determined')
     else:
         print('An unsuccessful roll :(')
         
@@ -120,10 +156,11 @@ def main():
     print('LET\'S ROLL SOME DICE!')
     print(25*'=')
     print('')
-    roll_1 = roll('d4', 'move')
+    roll_1 = roll('d4', 'might')
     print(20*'-')
     roll_2 = roll('d6', 'blaster', 'd')
     print(20*'-')
     roll_3 = roll('d10', 'might', 'a')
+
 if __name__ == "__main__":
     main()
