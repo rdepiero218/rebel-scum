@@ -36,27 +36,6 @@ def check_resolver(action, roll):
     else:
         result = False
 
-
-
-    #    if roll in outcomes[action]:
-    #         # print('Success!')
-    #         result = True
-    #     elif roll == 1:
-    #         result = 'key'
-    #     elif roll :
-    #         # print('Unsuccessful :(')
-    #         result = False
-
-
-    # if roll in outcomes[action]:
-    #     # print('Success!')
-    #     result = True
-    # elif roll == 1:
-    #     result = 'key'
-    # else:
-    #     # print('Unsuccessful :(')
-    #     result = False
-
     return result
 
 def check_vantage(results, vantage=None):
@@ -121,18 +100,6 @@ def roll(die_type, action, vantage=None):
 
         print(roll_result_msg + success_msg)
         results.append(result)
-        # if roll == 1:
-        #     print('Your KEY! Success depends on your character')
-        #     results.append(True)
-
-        # elif roll == dice[die_type]:
-        #     print('Your ULTIMATE! Success depends on how BRIGHT or DARK it is')
-        #     results.append(True)
-        # else:
-        #     # resolve = resolver(action, roll)
-        #     # print('Success?', resolve)
-        #     # results.append(resolve)
-            # results.append(check_resolver(action, roll))
 
     success = check_vantage(results, vantage)
     # print(50*'-')
@@ -166,10 +133,7 @@ def roller():
         die_type = input("Enter your die (d4, d6, d8, d10): ")
         action_type = actions[input("Enter the action (i)ntel, (mo)ve, (b)laster, (mi)ght): ")]
         vantage_type = input("Enter (a)dvantage, (d)isadvantage, or (n)one: ")
-        # print(20*'-')
-        # print('action: ', actions[action_type])
-        # print(type(action_type))
-        # break
+
         while True: 
             if die_type not in dice.keys():
                 print("not a valid die type")
@@ -189,7 +153,9 @@ def roller():
 
     # return this_roll
 
-### FOR TESTING ONLY
+##------------------------------
+## TESTING
+##------------------------------
 
 def main():
     # dice_type = input('Choose a die (d4, d6, d8, d10)\n')

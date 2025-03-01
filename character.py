@@ -64,15 +64,7 @@ def print_character_sheet(character):
     util.printer(30*'~', 'fast')
     util.printer(f"{character['name']} - {character['class']}", 'fast')
     util.printer(30*'~', 'fast')
-    # print(f"Role:   {character['role']} ({character['die']})")
-    # print(f"Gender: {character['gender']}")
-    # print('')
-    # print(f"PROFILE: { character['profile'] }")
-    # print('')
-    # print(f"STAR: {character['shining star']}")
-    # print(f"      Burn a star to succeed whenever the result {character['burn star']}")
-    # print()
-    # print(f"EDGES: ")
+
     time.sleep(0.5)
     sheet_string = f"""
 Role:   {character['role']} ({character['die']})
@@ -140,11 +132,6 @@ def recruit_crew(crew):
     crew_size = len(recruited_crew)
 
     crew_roles = random.sample(a.crew_roles, crew_size)
-    # for i, member in enumerate(recruited_crew, start=1):
-    #     role = random.choice(a.crew_roles)
-    #     sys.stdout.write(f"\rRecruiting Crew Member {i}/{len(crew)}: {member} - {role}")
-    #     sys.stdout.flush()
-    #     time.sleep(0.7)
 
     methods = random.sample(a.recruitment_methods, crew_size)
     for i in range(1,crew_size+1):
@@ -160,18 +147,8 @@ def recruit_crew(crew):
     time.sleep(2)
     print(' ')
 
-    # crew_manifest(crew)
-    # util.printer("Your crew:")
-    # for member in recruited_crew:
-    #     role = random.choice(a.crew_roles)
-    #     util.printer(f"- {member}, {role}")
-    #     time.sleep(0.5)
 
 def crew_manifest(crew):
-#     manifest_header = f"""
-# {62*'-'}
-# '|'+'CREW MANIFEST'.center(60, ' ')+'|'
-# {62*'-'}
 
 # """
     border = 62*'-'

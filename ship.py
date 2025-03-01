@@ -90,42 +90,6 @@ GENDER: {ship['gender']}
 
     print(' ')
 
-
-# def ship_builder(gender, edges):
-
-#     traits = random.sample(a.ship_traits, k=3)
-
-#     features = a.ship_extras + edges # adds ship edges for extra fun in screen printout
-
-#     total = len(features)
-
-#     bar_length = 30
-    
-#     for i, feature in enumerate(features, start=1):
-#         # Calculate progress
-#         progress = i / total
-#         bar = '=' * int(bar_length * progress)
-#         spaces = ' ' * (bar_length - len(bar))
-        
-#         # Display progress bar with feature name
-#         sys.stdout.write(f"\rBuilding Ship: [{bar}{spaces}] {int(progress * 100)}% — Installing: {feature} {8*' '}")
-#         sys.stdout.flush()
-        
-#         time.sleep(0.5)  # Simulate time taken to install each feature
-
-#     print('\n\n')
-#     # Assign gender and other funny traits
-#     print(f"....Assigning ship gender... ✅ {gender}")
-#     time.sleep(1)
-    
-#     # print("Assigning additional quirky features:")
-#     i = 0
-#     for trait in random.sample(traits, k=3):
-        
-#         print(f"{4*'.'}{random.choice(a.ship_building_words[i])} {trait}")
-#         i += 1
-#         time.sleep(0.5)
-
 def ship_builder(gender, edges):
 
     traits = random.sample(a.ship_traits, k=3)
@@ -156,7 +120,7 @@ def ship_builder(gender, edges):
 
     print('\n')
     # Assign gender and other funny traits
-    util.printer(f"....Assigning ship gender... ✅ {gender}")
+    util.printer(f"....Assigning ship gender... \u2714 {gender}")
     # print(' ')
 
     time.sleep(1)
