@@ -19,6 +19,7 @@ def roll_die(die_type):
 
     roll = random.randint(1, dice[die_type])
     
+    # store as tuple to store die type (immutable)
     return (roll, die_type)
 
 def check_resolver(action, roll):
@@ -87,6 +88,7 @@ def check_vantage(results, vantage=None):
 def roll(die_type, action, vantage=None):
 
     vantage_type = None
+    print(45*'-')
 
     if vantage == None:
         rolls = [roll_die(die_type)] 
@@ -101,7 +103,7 @@ def roll(die_type, action, vantage=None):
             vantage_type = 'DISADVANTAGE'
             # print('You are rolling with DISADVANTAGE')
         print(f'You are rolling for {action.upper()} with {vantage_type}')
-    
+    print(45*'-')
     results = []
     
     for roll in rolls:
@@ -109,13 +111,13 @@ def roll(die_type, action, vantage=None):
         roll_result_msg = f'You rolled a {roll[0]} with a {roll[1]}'
 
         if result == 'key':
-            success_msg = f': Your KEY! Success depends on your character.'
+            success_msg = f'\n         Your KEY! Success depends on your character.\n'
         elif result == 'ultimate':
-            success_msg = f': Your ULTIMATE! Success depends on how BRIGHT or DARK it is.'
+            success_msg = f'\n         Your ULTIMATE! Success depends on how BRIGHT or DARK it is.\n'
         elif result == True:
-            success_msg = f': A success!'
+            success_msg = f'\n         Success \u2714\n'
         elif result == False:
-            success_msg = f': A failure :('
+            success_msg = f'\n         Failure \u2715\n'
 
         print(roll_result_msg + success_msg)
         results.append(result)
@@ -133,15 +135,59 @@ def roll(die_type, action, vantage=None):
             # results.append(check_resolver(action, roll))
 
     success = check_vantage(results, vantage)
-    # print('Success is: ', success)
+    # print(50*'-')
     if success == True:
-        print('A successful roll :)')
+        print(5*'\u2714 ' + 'You SUCCEEDED ' + 5*'\u2714 ' + '\n')
     elif success == 'unknown':
-        print(f'Success with {vantage_type} cannot be determined')
+        # print(f'\uFF1F Success with {vantage_type} cannot be determined')
+        print(3*'\uFF1F' + ' Success cannot be determined ' + 3*'\uFF1F' + '\n')
     else:
-        print('An unsuccessful roll :(')
-        
+         print(5*'\u2715 ' + 'You FAILED' + 5*' \u2715' + '\n')
+    # print(50*'-')
     return success
+
+
+def roller():
+    actions = {'i': 'intel', 'mo': 'move', 'b': 'blaster', 'mi': 'might'}
+
+
+    while True:
+        
+        response = input('Would you like to roll some die? (y) or (n): ')
+
+        if response == 'n':
+            break
+        # else:
+        #     rolling = False
+
+        print('~~~~~~~~~~~~~~~~~~~')
+        print('   Roll the dice   ')
+        print('~~~~~~~~~~~~~~~~~~~')
+        die_type = input("Enter your die (d4, d6, d8, d10): ")
+        action_type = actions[input("Enter the action (i)ntel, (mo)ve, (b)laster, (mi)ght): ")]
+        vantage_type = input("Enter (a)dvantage, (d)isadvantage, or (n)one: ")
+        # print(20*'-')
+        # print('action: ', actions[action_type])
+        # print(type(action_type))
+        # break
+        while True: 
+            if die_type not in dice.keys():
+                print("not a valid die type")
+                break
+
+            elif action_type not in outcomes.keys():
+                print("not a valid action type")
+                break
+            
+            elif vantage_type == 'a' or vantage_type == 'd':
+                this_roll = roll(die_type, action_type, vantage_type)
+                # print(this_roll)
+                break
+            else:
+                this_roll = roll(die_type, action_type)
+                break
+
+    # return this_roll
 
 ### FOR TESTING ONLY
 
@@ -151,16 +197,19 @@ def main():
     # roll = roll_die(dice_type)
     # roll = roll_die(dice_type)
     # print(roll)
-    # roll some die
-    print(25*'=')
-    print('LET\'S ROLL SOME DICE!')
-    print(25*'=')
-    print('')
-    roll_1 = roll('d4', 'might')
-    print(20*'-')
-    roll_2 = roll('d6', 'blaster', 'd')
-    print(20*'-')
-    roll_3 = roll('d10', 'might', 'a')
+    ## roll some die
+    # print(25*'=')
+    # print('LET\'S ROLL SOME DICE!')
+    # print(25*'=')
+    # print('')
+    # roll_1 = roll('d4', 'might')
+    # # print(20*'-')
+    # roll_2 = roll('d6', 'blaster', 'd')
+    # # print(20*'-')
+    # roll_3 = roll('d10', 'might', 'a')
+
+    roller()
+
 
 if __name__ == "__main__":
     main()

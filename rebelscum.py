@@ -10,7 +10,7 @@ import random
 import utilities as util
 import aspects
 
-import character, quest, ship
+import character, quest, ship, dice_roller
 
 
 def main():
@@ -54,6 +54,8 @@ def main():
             # Incoming Transmission!
             prompt = quest.quest_generator()
             quest.print_quest(prompt)
+
+            dice_roller.roller()
 
             print(2*'\n')
             util.printer(8*" " + 50*'-','fast')
@@ -143,5 +145,7 @@ You are are our only hope...
     util.printer(util.wrap_text(opening_msg, 'blank_lines'))
     util.printer(8*" " + 50*'-','fast')
     print(' ')
+
+    
 if __name__ == '__main__':
     main()
